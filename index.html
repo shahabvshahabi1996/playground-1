@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <title>playground</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HTML, CSS &amp; JS Prototypen im Browser">
+  <meta name="author" content="Tim Verhaegh">
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Finger+Paint' rel='stylesheet'>
+  <style type="text/css">
+    h1>span{font-family:'Finger Paint', cursive; text-shadow:3px 3px 4px rgba(150,150,150,1);}
+    .tab-pane{height:512px;}
+    .editor,.result{height:96%;}
+    .input-append {width:96.5%;}
+    iframe.result{background:#fff; border:solid 1px #ccc; height:98%; width:99.9%;}
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <h1><span>playground</span> <small>
+      <acronym title="Hypertext Markup Language">HTML</acronym>, 
+      <acronym title="Cascading Style Sheet">CSS</acronym> &amp; 
+      <acronym title="JavaScript">JS</acronym> Prototypen im Browser
+    </small></h1>
+    <hr>
+
+    <ul class="nav nav-tabs" id="myTab">
+      <li class="active">
+        <a href="#html" data-toggle="tab">HTML</a>
+      </li>
+
+      <li>
+        <a href="#css" data-toggle="tab">CSS</a>
+      </li>
+
+      <li>
+        <a href="#javascript" data-toggle="tab">JavaScript</a>
+      </li>
+
+      <li>
+        <a href="#resources" data-toggle="tab">Ressource</a>
+      </li>
+
+      <li class="pull-right generate">
+        <a href="#result" data-toggle="tab">Ergebnis <i id="result_fullscreen" class="icon-resize-full" title="Vollbildmodus"></i></a>
+      </li>
+
+      <li class="pull-right generate">
+        <a href="#sourcecode" data-toggle="tab">Quellcode</a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="html">
+        <pre id="editor_html" class="editor"></pre>
+      </div>
+
+      <div class="tab-pane" id="css">
+        <pre id="editor_css" class="editor"></pre>
+      </div>
+
+      <div class="tab-pane" id="javascript">
+        <pre id="editor_javascript" class="editor"></pre>
+      </div>
+
+      <div class="tab-pane" id="resources">
+        <form>
+          <div class="row-fluid">
+            <div class="span6">
+              <h2>CSS</h2>
+              <hr>
+
+              <div class="res"></div>
+              <button class="btn btn-small add_resource" type="button" data-type="css" data-count="0">Hinzufügen</button>
+            </div>
+
+            <div class="span6">
+              <h2>JavaScript</h2>
+              <hr>
+
+              <div class="res"></div>
+              <button class="btn btn-small add_resource" type="button" data-type="js" data-count="0">Hinzufügen</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="tab-pane" id="result">
+        <iframe id="result_iframe" class="result" allowfullscreen="true" name="result_iframe"></iframe>
+      </div>
+
+      <div class="tab-pane" id="sourcecode">
+        <pre id="result_html" class="result"></pre>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container-fluid">
+      <p class="muted credit">Copyright 2013 Tim Verhaegh</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="http://code.jquery.com/jquery.js"></script> 
+
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/ace/ace.js"></script>
+  <script src="js/handlebars.js"></script>
+  <script src="js/bigscreen.min.js"></script>
+  <script src="js/jss.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Template -->
+  <script id="template" type="text/x-handlebars-template">
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <title>playground prototype</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{{#each stylesheet}}
+  <link rel="stylesheet" href="{{src}}">{{/each}}{{#if style_inline}}
+  <style type="text/css">
+{{{style_inline}}}
+  </style>{{/if}}
+</head>
+
+<body>
+{{{html}}}
+
+{{#each script}}
+  <scr{{undefined}}ipt src="{{src}}"></scr{{undefined}}ipt>{{/each}}{{#if script_inline}}
+  <scr{{undefined}}ipt type="text/javascript">
+{{{script_inline}}}
+  </scr{{undefined}}ipt>{{/if}}
+</body>
+</html>
+  </script>
+</body>
+</html>
