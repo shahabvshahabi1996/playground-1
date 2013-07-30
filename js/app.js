@@ -46,7 +46,12 @@ function generate_prototype() {
   });
 
   result_html.setValue(template(data), -1);
-  $('#result_iframe').attr('srcdoc', result_html.getValue());
+  if (!!("srcdoc" in document.createElement("iframe"))) {
+    $('#result_iframe').attr('srcdoc', result_html.getValue());
+  }
+  else {
+    document.getElementById("result_iframe").contentWindow.document.body.innerHTML = result_html.getValue();
+  }
 }
 
 $(function() {
