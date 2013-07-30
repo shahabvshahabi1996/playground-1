@@ -75,6 +75,9 @@ $(function() {
     generate_prototype();
   });
 
+  $('#download').click(function() {
+    Download.save(result_html.getValue(), 'playground-prototype.html');
+  });
 
   // fullscreen
   $('#result_fullscreen').click(function() {
