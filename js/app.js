@@ -64,7 +64,7 @@ $(function() {
   // resources
   $('.add_resource').on('click', function() {
     $(this).data('count', $(this).data('count') + 1);
-    var tmpl = '<div class="input-append"><input class="input-block-level" id="' + $(this).data('type') + $(this).data('count') + '" type="url"><button class="btn del_resource" type="button">-</button></div>';
+    var tmpl = '<div class="input-append"><input class="input-block-level" id="' + $(this).data('type') + $(this).data('count') + '" list="list_' + $(this).data('type') + '" type="url"><button class="btn del_resource" type="button">-</button></div>';
     $(this).parent().find('.res').append(tmpl);
   });
 
